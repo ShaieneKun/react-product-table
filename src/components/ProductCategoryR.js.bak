@@ -1,0 +1,28 @@
+export default function ProductCategoryRow({ products, type }) {
+    const productRows = () => {
+        let formattedProducts = (<></>);
+
+        for (const product of products) {
+            formattedProducts = (
+                <>
+                    {formattedProducts}
+                    <tr>
+                        <td>{product.name}</td>
+                        <td>{product.price}</td>
+                    </tr>
+                </>
+            );
+        }
+
+        return formattedProducts;
+    }
+
+    return (
+        <>
+            <tr>
+                <th>{type}</th>
+            </tr>
+            <tbody>{productRows()}</tbody>
+        </>
+    )
+}
