@@ -24,29 +24,6 @@ export default function ProductTable({ products }) {
         return productsByType
     }
 
-    function createProductSection({ products, type }) {
-        return (<>
-            <ProductCategoryRow type={type} />
-            <tbody>
-                {products.map((product, index) =>
-                    <ProductRow key={index} product={product} />)}
-            </tbody>
-        </>)
-    }
-
-    function createProductSections() {
-        const productsByType = filterProducts(products)
-        return (<>
-            {
-                productsByType.map(element => createProductSection(
-                    element
-                ))
-            }
-        </>)
-    }
-
-    const productSections = createProductSections()
-
     return (
         <table>
             <thead>
@@ -55,7 +32,26 @@ export default function ProductTable({ products }) {
                     <th>Price</th>
                 </tr>
             </thead>
-            {productSections}
+            {/* This will cause a warning since it would be ideal for it to be a independent component */}
+            {
+                filterProducts(products).map(
+                    (productsByType, index) => {
+                        return (<>
+
+                            <ProductCategoryRow key={index} type={productsByType.type} />
+                            <tbody>
+                                {
+                                    productsByType.products.map((product, index) => (
+                                        <ProductRow key={index} product={product} />)
+                                    )
+                                }
+                            </tbody>
+
+                        </>)
+                    }
+
+                )
+            }
         </table>
     )
 }
