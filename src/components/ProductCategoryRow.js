@@ -1,7 +1,9 @@
 export default function ProductCategoryRow({ type }) {
     return (
-        <tr>
-            <th>{type}</th>
-        </tr>
+        <theader>
+            <tr>
+                <th>{type}</th>
+            </tr>
+        </theader>
     )
 }

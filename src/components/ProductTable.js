@@ -1,5 +1,8 @@
-export default function ProductTable({products}) {
-    function filterProducts() {
+import ProductCategoryRow from "./ProductCategoryRow"
+import ProductRow from "./ProductRow"
+
+export default function ProductTable({ products }) {
+    function filterProducts(products) {
         let productsTypes = []
         let productsByType = []
 
@@ -18,20 +21,41 @@ export default function ProductTable({products}) {
                 })
             }
         }
-
         return productsByType
     }
 
+    function createProductSection({ products, type }) {
+        return (<>
+            <ProductCategoryRow type={type} />
+            <tbody>
+                {products.map((product, index) =>
+                    <ProductRow key={index} product={product} />)}
+            </tbody>
+        </>)
+    }
+
+    function createProductSections() {
+        const productsByType = filterProducts(products)
+        return (<>
+            {
+                productsByType.map(element => createProductSection(
+                    element
+                ))
+            }
+        </>)
+    }
+
+    const productSections = createProductSections()
+
     return (
         <table>
-            <theader>
+            <thead>
                 <tr>
                     <th>Name</th>
                     <th>Price</th>
                 </tr>
-            </theader>
-
-
+            </thead>
+            {productSections}
         </table>
     )
 }

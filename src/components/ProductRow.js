@@ -1,4 +1,4 @@
-export default function productRow({product}) {
+export default function ProductRow({product}) {
     const { name, price } = product
 
     return (
