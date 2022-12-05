@@ -2,7 +2,7 @@ export default function ProductCategoryRow({ type }) {
     return (
         <thead>
             <tr>
-                <th>{type}</th>
+                <th colSpan="2">{type}</th>
             </tr>
         </thead>
     )

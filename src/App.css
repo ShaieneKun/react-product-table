@@ -1,12 +1,12 @@
-.App {
+.app {
   height: 70vh;
   text-align: center;
 }
 
-.App.Centered {
+.app.centered {
   display: flex;
   justify-content: center;
-  /* align-items: center; */
+  align-items: center;
 }
 
 

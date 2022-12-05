@@ -34,5 +34,10 @@ export const products = [
         price: 400.0,
         type: "Video Games",
         inStock: true
+    },{
+        name: "XBox Series X",
+        price: 500.0,
+        type: "Video Games",
+        inStock: false
     }
 ]

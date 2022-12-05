@@ -1,12 +1,24 @@
 import ProductCategoryRow from "./ProductCategoryRow"
 import ProductRow from "./ProductRow"
 
-export default function ProductTable({ products }) {
+export default function ProductTable({ products, searchText, inStockOnly }) {
     function filterProducts(products) {
         let productsTypes = []
         let productsByType = []
 
+        let nameLower, typeLower, searchLower
+
         for (const product of products) {
+            if (inStockOnly && !product.inStock)
+                continue
+            if (!!searchText) {
+                nameLower = product.name.toLowerCase()
+                typeLower = product.type.toLowerCase()
+                searchLower = searchText.toLowerCase()
+                if (!(nameLower.includes(searchLower) || typeLower.includes(searchLower)))
+                    continue
+            }
+
             if (productsTypes.includes(product.type)) {
                 const productsSameType = productsByType.find(element => element.type === product.type)
                 productsSameType.products.push(product)
