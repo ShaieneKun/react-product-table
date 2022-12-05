@@ -26,8 +26,13 @@ export const products = [
         inStock: false,
     }, {
         name: "Peas",
-        price: 1.0,
+        price: 2.0,
         type: "Vegetables",
         inStock: false,
+    },{
+        name: "PS5",
+        price: 400.0,
+        type: "Video Games",
+        inStock: true
     }
 ]

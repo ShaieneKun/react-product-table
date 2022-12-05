@@ -1,6 +1,14 @@
 .App {
+  height: 70vh;
   text-align: center;
 }
+
+.App.Centered {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+
 
 .App-logo {
   height: 40vmin;
